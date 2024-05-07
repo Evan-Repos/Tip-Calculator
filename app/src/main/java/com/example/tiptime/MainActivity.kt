@@ -39,10 +39,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Switch
-import java.util.Locale
 import androidx.annotation.DrawableRes
 import androidx.compose.material3.Icon
 import androidx.compose.ui.res.painterResource
+import androidx.annotation.VisibleForTesting
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -167,7 +167,9 @@ fun RoundTheTipRow(
  * Calculates the tip based on the user input and format the tip amount
  * according to the local currency.
  */
-private fun calculateTip(
+
+@VisibleForTesting
+internal fun calculateTip(
     amount: Double,
     tipPercent: Double = 12.0,
     roundUp: Boolean
@@ -177,7 +179,7 @@ private fun calculateTip(
         tip = kotlin.math.ceil(tip)
     }
     return NumberFormat
-        .getCurrencyInstance(Locale.GERMANY)
+        .getCurrencyInstance()
         .format(tip)
 }
 
