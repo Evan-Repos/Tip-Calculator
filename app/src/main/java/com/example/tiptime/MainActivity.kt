@@ -142,6 +142,7 @@ fun EditNumberField(
         modifier = modifier
     )
 }
+
 @Composable
 fun RoundTheTipRow(
     roundUp: Boolean,
